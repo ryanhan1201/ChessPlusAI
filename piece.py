@@ -40,7 +40,11 @@ class Rook(self):
     Input: current x, y position, and current state of the board
     Return: A list of all the valid moves
     """
-    def legalMoves(r, c):
+    def legalMoves(player = int, r = int, c = int):
+        retList = []
+        if plyaer == 1:
+        else:
+        return retList
         
 class Knight(self):
     PLAYER = ""
