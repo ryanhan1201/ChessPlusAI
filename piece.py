@@ -10,31 +10,46 @@ class Pawn(self):
     Input: current x, y position, and current state of the board
     Return: A list of all the valid moves
     """
-    def legalMoves(x = int, y = int, grid = [[]]):
-        
-        
+    def legalMoves(player = int, r = int, c = int, grid = [[]]):
+        retList = []
+        #TODO: Check for the which player first
+        if player == 1:
+            if r < len(grid) - 1 and grid[r + 1][c] == Empty:
+                retList.append((r + 1, c))
+            if r < len(grid) - 1 and c < len(grid) and grid[r + 1][c + 1] != Empty:
+                retList.append((r + 1, c + 1))
+            if r < len(grid) - 1 and c > 0 and grid[r + 1][c - 1] != Empty:
+                retList.append((r + 1, c - 1))
+        else:
+            if r > 0 and grid[r - 1][c] == Empty:
+                retList.append((r - 1, c))
+            if r > 0 and c > 0 and grid[r - 1][c - 1] != Empty:
+                retList.append((r + 1, c + 1))
+            if r > 0 and c < len(grid) - 1 and grid[r - 1][c + 1] != Empty:
+                retList.append((r + 1, c - 1))
+        return retList
 class Rook(self):
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
-    def __init__(self, player = int, x = int, y = int):
+    def __init__(self, player = int, r = int, c = int):
         self.PLAYER = player
-        self.POS = (x, y)
-        self.INITPOS = (x, y)
+        self.POS = (r, c)
+        self.INITPOS = (r, c)
     """
     Input: current x, y position, and current state of the board
     Return: A list of all the valid moves
     """
-    def legalMoves(x, y):
+    def legalMoves(r, c):
         
 class Knight(self):
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
-    def __init__(self, player = int, x = int, y = int):
+    def __init__(self, player = int, r = int, c = int):
         self.PLAYER = player
-        self.POS = (x, y)
-        self.INITPOS = (x, y)
+        self.POS = (r, c)
+        self.INITPOS = (r, c)
     """
     Input: current x, y position, and current state of the board
     Return: A list of all the valid moves
@@ -45,10 +60,10 @@ class Bishop(self):
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
-    def __init__(self, player = int, x = int, y = int):
+    def __init__(self, player = int, r = int, c = int):
         self.PLAYER = player
-        self.POS = (x, y)
-        self.INITPOS = (x, y)
+        self.POS = (r, c)
+        self.INITPOS = (r, c)
     """
     Input: current x, y position, and current state of the board
     Return: A list of all the valid moves
@@ -59,10 +74,10 @@ class Queen(self):
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
-    def __init__(self, player = int, x = int, y = int):
+    def __init__(self, player = int, r = int, c = int):
         self.PLAYER = player
-        self.POS = (x, y)
-        self.INITPOS = (x, y)
+        self.POS = (r, c)
+        self.INITPOS = (r, c)
     """
     Input: current x, y position, and current state of the board
     Return: A list of all the valid moves
@@ -73,10 +88,10 @@ class King(self):
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
-    def __init__(self, player, x, y):
+    def __init__(self, player, r = int, c = int):
         self.PLAYER = player
-        self.POS = (x, y)
-        self.INITPOS = (x, y)
+        self.POS = (r, c)
+        self.INITPOS = (r, c)
     """
     Input: current x, y position, and current state of the board
     Return: A list of all the valid moves
@@ -85,5 +100,5 @@ class King(self):
         
 class Empty(self):
     POS = (0, 0)
-    def __init(self, x = int, y = int):
-        self.POS = (x, y)
+    def __init(self, r = int, c = int):
+        self.POS = (r, c)
