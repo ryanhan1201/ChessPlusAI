@@ -40,7 +40,7 @@ class Rook(self):
     Input: current x, y position, and current state of the board
     Return: A list of all the valid moves
     """
-    def legalMoves(player = int, r = int, c = int, grid = [[]]):
+    def legalMoves(r = int, c = int, grid = [[]]):
         retList = []
         for row in range(0, len(grid)):
             if grid[row][c] != Empty:
@@ -62,8 +62,29 @@ class Knight(self):
     Input: current x, y position, and current state of the board
     Return: A list of all the valid moves
     """
-    def legalMoves(x, y):
-        
+    def legalMoves(r = int, c = int, grid = [[]]):
+        retList = []
+        if r < len(grid) - 2:
+            if c < len(grid) - 1 and grid[r + 2][c + 1] != Empty:
+                retList.append((r + 2, c + 1))
+            if c - 1 >= 0 and grid[r + 2][c - 1] != Empty:
+                retList.append((r + 2, c - 1))
+        if r - 2 >= 0:
+            if c < len(grid) - 1 and grid[r - 2][c + 1] != Empty:
+                retList.append((r - 2, c + 1))
+            if c - 1 >= 0 and grid[r - 2][c - 1] != Empty:
+                retList.append((r - 2, c - 1))
+        if c < len(grid) - 2:
+            if r < len(grid) - 1 and grid[r + 1][c + 2] != Empty:
+                retList.append((r + 1, c + 2))
+            if r - 1 >= 0 and grid[r - 1][c + 2] != Empty:
+                retList.append((r - 1, c + 2))
+        if c - 2 >= 0:
+            if r < len(grid) - 1 and grid[r + 1][c - 2] != Empty:
+                retList.append((r + 1, c - 2))
+            if r - 1 >= 0 and grid[r - 1][c - 2] != Empty:
+                retList.append((r - 1, c - 2))
+        return retList
 class Bishop(self):
     PLAYER = ""
     POS = (0, 0)
