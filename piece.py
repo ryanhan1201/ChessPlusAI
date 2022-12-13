@@ -1,4 +1,4 @@
-class Pawn(self):
+class Pawn():
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
@@ -30,7 +30,8 @@ class Pawn(self):
         return retList
 
 #TODO: CONSIDER THE CASES WHEN YOU TAKE THE PEICE
-class Rook(self):
+#Think about the castling possibility
+class Rook():
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
@@ -77,7 +78,7 @@ class Rook(self):
                     retList.append((r, c - i))
         return retList
         
-class Knight(self):
+class Knight():
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
@@ -113,7 +114,7 @@ class Knight(self):
                 retList.append((r - 1, c - 2))
         return retList
 
-class Bishop(self):
+class Bishop():
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
@@ -159,7 +160,7 @@ class Bishop(self):
                     downLeft = False
         return retList
 
-class Queen(self):
+class Queen():
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
@@ -177,7 +178,7 @@ class Queen(self):
             retList.append(coor)
         return retList
         
-class King(self):
+class King():
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
@@ -191,9 +192,11 @@ class King(self):
     """
     #Need to think about being in check and stuff
     #will do later
+    #thnk  about castling too
+    #have a checker for castling is possible, like check if the king has moved
     # def legalMoves(x, y):
         
-class Empty(self):
+class Empty():
     POS = (0, 0)
     def __init(self, r = int, c = int):
         self.POS = (r, c)
