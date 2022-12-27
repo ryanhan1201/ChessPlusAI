@@ -3,12 +3,13 @@ import piece
 Player 1 = White Pieces
 Player 2 = Black Pieces
 """
-class World():
+class World:
     LENGTH = 8
     HEIGHT = 8
-    GRID = [[]]
+    GRID = []
     def __init__(self):
-        self.GRID = [[]]
+        self.GRID = []
+        self.setup()
     def setup(self):
         #Bottom is White Side
         #Top should be Black Side
@@ -29,18 +30,29 @@ class World():
         self.GRID[7][7] = piece.Rook(2, 7, 7)
         #Doing Panws
         for c in range(self.LENGTH):
-            self.GRID[7][c] = piece.Pawn(2, 7, 0)
-        #WHITE PIECES
+            self.GRID[6][c] = piece.Pawn(2, 7, 0)
+        #WHITE PIECES            
         self.GRID[0][0] = piece.Rook(1, 0, 0)
         self.GRID[0][1] = piece.Knight(1, 0, 1)
         self.GRID[0][2] = piece.Bishop(1, 0, 2)
-        self.GRID[0][3] = piece.King(1, 0, 3)
-        self.GRID[0][4] = piece.Queen(1, 0, 4)
+        self.GRID[0][3] = piece.King(1, 0, 4)
+        self.GRID[0][4] = piece.Queen(1, 0, 3)
         self.GRID[0][5] = piece.Bishop(1, 0, 5)
         self.GRID[0][6] = piece.Knight(1, 0, 6)
         self.GRID[0][7] = piece.Rook(1, 0, 7)
         #Doing Panws
         for c in range(self.LENGTH):
-            self.GRID[0][c] = piece.Pawn(1, 0, c)
+            self.GRID[1][c] = piece.Pawn(1, 0, c)
 
+    def printGrid(self):
+        for row in range(len(self.GRID) - 1, -1, -1):
+            rowString = ""
+            under = ""
+            # print("Row:", row)
+            for col in range(len(self.GRID)):
+                # print("Col:", col)
+                rowString += str(self.GRID[row][col]) + " | "
+                under += "--| "
+            print(rowString)
+            print(under)
     

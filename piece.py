@@ -1,7 +1,9 @@
-class Pawn():
+class Pawn:
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
+    def __str__(self):
+        return "P"
     def __init__(self, player = int, x = int, y = int):
         self.PLAYER = player
         self.POS = (x, y)
@@ -31,14 +33,20 @@ class Pawn():
 
 #TODO: CONSIDER THE CASES WHEN YOU TAKE THE PEICE
 #Think about the castling possibility
-class Rook():
+class Rook:
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
+    CASTLE = False #Tells if this rook is castleable
+    MOVED = False
+    def __str__(self):
+        return "R"
     def __init__(self, player = int, r = int, c = int):
         self.PLAYER = player
         self.POS = (r, c)
         self.INITPOS = (r, c)
+        if (r == 0 and c == 7) or (r == 7 and c == 7):
+            self.CASTLE = True
     """
     Input: current x, y position, and current state of the board
     Return: A list of all the valid moves
@@ -77,11 +85,21 @@ class Rook():
                 if c - i >= 0:
                     retList.append((r, c - i))
         return retList
-        
-class Knight():
+        #check to see if castling is allowed
+    def notMove(self):
+        return self.INITPOS == self.POS
+    def castle(self, king):
+        if self.CASLTE and self.notMove and king.notMove():
+            return True
+            #Make it so that castling is possible
+
+
+class Knight:
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
+    def __str__(self):
+        return "Kn"
     def __init__(self, player = int, r = int, c = int):
         self.PLAYER = player
         self.POS = (r, c)
@@ -114,10 +132,12 @@ class Knight():
                 retList.append((r - 1, c - 2))
         return retList
 
-class Bishop():
+class Bishop:
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
+    def __str__(self):
+        return "B"
     def __init__(self, player = int, r = int, c = int):
         self.PLAYER = player
         self.POS = (r, c)
@@ -160,10 +180,12 @@ class Bishop():
                     downLeft = False
         return retList
 
-class Queen():
+class Queen:
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
+    def __str__(self):
+        return "Q"
     def __init__(self, player = int, r = int, c = int):
         self.PLAYER = player
         self.POS = (r, c)
@@ -178,14 +200,22 @@ class Queen():
             retList.append(coor)
         return retList
         
-class King():
+class King:
     PLAYER = ""
     POS = (0, 0)
     INITPOS = (0, 0)
+    def __str__(self):
+        return "K"
     def __init__(self, player, r = int, c = int):
         self.PLAYER = player
         self.POS = (r, c)
         self.INITPOS = (r, c)
+    
+    """
+    Returns true if the king hasnt moved
+    """
+    def notMove(self):
+        return self.INITPOS == self.POS
     """
     Input: current x, y position, and current state of the board
     Return: A list of all the valid moves
@@ -196,7 +226,9 @@ class King():
     #have a checker for castling is possible, like check if the king has moved
     # def legalMoves(x, y):
         
-class Empty():
+class Empty:
     POS = (0, 0)
-    def __init(self, r = int, c = int):
+    def __init__(self, r = int, c = int):
         self.POS = (r, c)
+    def __str__(self):
+        return " "
