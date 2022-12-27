@@ -55,5 +55,3 @@ class World:
                 under += "--| "
             print(rowString)
             print(under)
-    
-#Testing small change
